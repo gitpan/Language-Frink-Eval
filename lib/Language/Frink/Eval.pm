@@ -29,7 +29,7 @@ use IPC::Open2;
 use IO::Select;
 use Carp;
 
-our $VERSION = '0.01';
+our $VERSION = '0.02';
 
 =pod
 
@@ -151,6 +151,7 @@ sub new {
 
   my ($rfh, $wfh);
   my $pid = open2($rfh, $wfh, $p{runcommand});
+  # TODO: Verify that this returns a copyright string.
   my $copyright = <$rfh>;
   my $self      = {
     pid        => $pid,
